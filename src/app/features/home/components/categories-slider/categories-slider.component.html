@@ -1,0 +1,14 @@
+<section>
+    <h1 class="main-title  border-bottom border-3 border-success-subtle">Categories</h1>
+    <owl-carousel-o [options]="customOptions">
+
+        @for (category of categories; track category._id) {
+            <ng-template carouselSlide [id]="category._id">
+                <img [src]="category.image" class="w-100 category-img" [alt]="category.name" [title]="category.slug">
+            </ng-template>
+        }@empty {
+            <h2 class="fw-bold text-center text-success-emphasis">Loadding ...</h2>
+        }
+
+    </owl-carousel-o>
+</section>

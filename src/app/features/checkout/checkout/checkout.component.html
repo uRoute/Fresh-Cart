@@ -1,0 +1,91 @@
+<section class="auth-section p-3 rounded-3 my-3">
+
+    <h1 class="main-title fs-1 fw-bold">Checkout your order:</h1>
+
+    <form [formGroup]="checkoutForm" (ngSubmit)="checkoutSubmit()">
+
+        <div>
+            @let detailsControl = checkoutForm.get('details');
+            <div class="form-floating my-2">
+                <input [class]="{
+                    'is-valid' : !detailsControl?.errors && detailsControl?.dirty,
+                    'is-invalid' : detailsControl?.errors && detailsControl?.dirty,
+                }" formControlName="details" type="text" class="form-control rounded-4" id="floatingInput"
+                    placeholder="">
+                <label for="floatingInput">Details:</label>
+            </div>
+            @if(detailsControl?.errors && detailsControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(detailsControl?.getError('required')){<li class="font-monospace fw-bold">Details is Required
+                    </li>}
+                </ul>
+            </div>
+            }
+        </div>
+        <div>
+            @let phoneControl = checkoutForm.get('phone');
+            <div class="form-floating my-2">
+                <input [class]="{
+                    'is-valid' : !phoneControl?.errors && phoneControl?.dirty,
+                    'is-invalid' : phoneControl?.errors && phoneControl?.dirty,
+                }" formControlName="phone" type="tel" class="form-control rounded-4" id="floatingInput" placeholder="">
+                <label for="floatingInput">Phone:</label>
+            </div>
+            @if(phoneControl?.errors && phoneControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(phoneControl?.getError('required')){<li class="font-monospace fw-bold">Phone is Required</li>}
+                    @if(phoneControl?.getError('pattern')){<li class="font-monospace fw-bold">Phone is Not Valid</li>}
+                </ul>
+            </div>
+            }
+        </div>
+
+        <div>
+            @let cityControl = checkoutForm.get('city');
+            <div class="form-floating my-2">
+                <input [class]="{
+                    'is-valid' : !cityControl?.errors && cityControl?.dirty,
+                    'is-invalid' : cityControl?.errors && cityControl?.dirty,
+                }" formControlName="city" type="text" list="cityList" class="form-control rounded-4" id="floatingInput"
+                    placeholder="">
+                <label for="floatingInput">City:</label>
+
+                <datalist id="cityList">
+                    <option value="cairo">
+                    <option value="alex">
+                    <option value="aisut">
+                    <option value="aswan">
+                </datalist>
+            </div>
+            @if(cityControl?.errors && cityControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(cityControl?.getError('required')){<li class="font-monospace fw-bold">City is Required</li>}
+                </ul>
+            </div>
+            }
+        </div>
+
+        <div class="rounded-3 p-3 bg-light text-success my-3 fs-4 fw-bold">
+            <div class="form-check">
+                <input #visa value="visa" class="form-check-input" type="radio" name="payment" id="payment1">
+                <label class="form-check-label d-flex align-content-center" for="payment1">
+                    <span class="me-1">Visa</span> <span><i class="fa-brands fa-cc-visa mx-3"></i></span>
+                </label>
+            </div>
+            <div class="form-check">
+                <input #cash value="cash" class="form-check-input" type="radio" name="payment" id="payment2">
+                <label class="form-check-label" for="payment2">
+                    Cash on delivery
+                </label>
+            </div>
+
+        </div>
+        <button [disabled]="checkoutForm.invalid" class="main-btn rounded-pill fw-bold text-white d-block w-100">Payment
+        </button>
+
+    </form>
+
+</section>

@@ -1,0 +1,53 @@
+<section class="auth-section p-3 rounded-3 my-3">
+
+    <h1 class="main-title fs-1 fw-bold">Login now</h1>
+
+    <form [formGroup]="LoginForm" (ngSubmit)="login()">
+      
+        <div>
+            @let emailControl = LoginForm.get('email');
+            <div class="form-floating my-2">
+                <input [class]="{
+                    'is-valid' : !emailControl?.errors && emailControl?.dirty,
+                    'is-invalid' : emailControl?.errors && emailControl?.dirty,
+                }" formControlName="email" type="email" class="form-control rounded-4" id="floatingInput" placeholder="">
+                <label for="floatingInput">Email:</label>
+            </div>
+            @if(emailControl?.errors && emailControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(emailControl?.getError('required')){<li class="font-monospace fw-bold">Email is Required</li>}
+                    @if(emailControl?.getError('email')){<li class="font-monospace fw-bold">Email is Not Valid</li>}
+                </ul>
+            </div>
+            }
+        </div>
+        <div>
+            @let passControl = LoginForm.get('password');
+            <div class="form-floating my-2">
+                <input [class]="{
+                    'is-valid' : !passControl?.errors && passControl?.dirty,
+                    'is-invalid' : passControl?.errors && passControl?.dirty,
+                }" formControlName="password" type="password" class="form-control rounded-4" id="floatingInput" placeholder="">
+                <label for="floatingInput">Password:</label>
+            </div>
+            @if(passControl?.errors && passControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(passControl?.getError('required')){<li class="font-monospace fw-bold">Password is Required</li>}
+                    @if(passControl?.getError('pattern')){<li class="font-monospace fw-bold">Password is Not Valid</li>}
+                </ul>
+            </div>
+            }
+        </div>
+      
+
+
+        <button [disabled]="LoginForm.invalid"
+            class="main-btn rounded-pill fw-bold text-white d-block w-100">Login
+            @if(loading){<span><i class="fa-solid fa-spinner fa-spin" style="color: #ffffff;"></i></span>}
+        </button>
+
+    </form>
+
+</section>

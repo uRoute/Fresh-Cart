@@ -1,0 +1,29 @@
+<section class="my-3">
+
+    <div class="categories">
+
+        @for(category of categories ; track category._id){
+
+        <div class="row align-items-center bg-info-subtle rounded-3 border border-2 border-primary-subtle mb-3">
+            <div class="col-2 p-2">
+                <div class="cate-img">
+                    <img class="w-100 h-100 d-block" [src]="category.image" [alt]="category.slug" [title]="category.slug">
+                </div>
+            </div>
+            <div class="col-7 p-2">
+                <div class="category-caption">
+                    <h1 class="main-title fw-bold fs-1"> {{category.name}} </h1>
+                </div>
+            </div>
+        </div>
+
+        }@empty {
+        <h1 class="text-center main-title d-flex align-items-center justify-content-center">No items to show
+                <span><i class="fa-solid fa-person-through-window fa-2xl mx-md-3" style="color: #4fb395;"></i></span>
+            </h1>
+
+        }
+
+    </div>
+
+</section>

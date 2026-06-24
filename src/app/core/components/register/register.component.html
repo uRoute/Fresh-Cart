@@ -1,0 +1,114 @@
+<section class="auth-section p-3 rounded-3 my-3">
+
+    <h1 class="main-title fs-1 fw-bold">Register now</h1>
+
+    <form [formGroup]="RegisterForm" (ngSubmit)="register()">
+        <div>
+            @let nameControl = RegisterForm.get('name');
+            <div class="form-floating my-2">
+                <input  [class]="{
+                    'is-valid' : !nameControl?.errors && nameControl?.dirty,
+                    'is-invalid' : nameControl?.errors && nameControl?.dirty,
+                }" formControlName="name" type="text" class="form-control rounded-4 position-relative" id="floatingInput" placeholder="">
+                <label for="floatingInput">Name:</label>
+            </div>
+            @if(nameControl?.errors && nameControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(nameControl?.getError('required')){<li class="font-monospace fw-bold">Name is Required</li>}
+                    @if(nameControl?.getError('pattern')){<li class="font-monospace fw-bold">Name is Not Valid</li>}
+                </ul>
+            </div>
+            }
+        </div>
+        <div>
+            @let emailControl = RegisterForm.get('email');
+            <div class="form-floating my-2">
+                <input [class]="{
+                    'is-valid' : !emailControl?.errors && emailControl?.dirty,
+                    'is-invalid' : emailControl?.errors && emailControl?.dirty,
+                }" formControlName="email" type="email" class="form-control rounded-4" id="floatingInput"
+                    placeholder="">
+                <label for="floatingInput">Email:</label>
+
+            </div>
+            @if(emailControl?.errors && emailControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(emailControl?.getError('required')){<li class="font-monospace fw-bold">Email is Required</li>}
+                    @if(emailControl?.getError('email')){<li class="font-monospace fw-bold">Email is Not Valid</li>}
+                </ul>
+            </div>
+            }
+        </div>
+        <div>
+            @let passControl = RegisterForm.get('password');
+            <div class="form-floating my-2">
+                <input [class]="{
+                    'is-valid' : !passControl?.errors && passControl?.dirty,
+                    'is-invalid' : passControl?.errors && passControl?.dirty,
+                }" formControlName="password" type="password" class="form-control rounded-4" id="floatingInput"
+                    placeholder="">
+                <label for="floatingInput">Password:</label>
+            </div>
+            @if(passControl?.errors && passControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(passControl?.getError('required')){<li class="font-monospace fw-bold">Password is Required</li>}
+                    @if(passControl?.getError('pattern')){<li class="font-monospace fw-bold">Password is Not Valid</li>}
+                </ul>
+            </div>
+            }
+        </div>
+        <div>
+            @let rePassControl = RegisterForm.get('rePassword');
+            <div class="form-floating my-2">
+                <input [class]="{
+                    'is-valid' : (!rePassControl?.errors || !RegisterForm.errors) && rePassControl?.dirty,
+                    'is-invalid' : (rePassControl?.errors || RegisterForm.errors) && rePassControl?.dirty,
+                }" formControlName="rePassword" type="password" class="form-control rounded-4" id="floatingInput"
+                    placeholder="">
+                <label for="floatingInput">Confirm Pasword:</label>
+            </div>
+            @if((rePassControl?.errors || RegisterForm.errors) && rePassControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(rePassControl?.getError('required')){<li class="font-monospace fw-bold">Repassword is Required
+                    </li>}
+                    @if(rePassControl?.getError('pattern')){<li class="font-monospace fw-bold">Repassword is Not Valid
+                    </li>}
+                    @if(RegisterForm.errors && RegisterForm.getError('missMatch')){<li class="font-monospace fw-bold">
+                        Repassword is Not Like Password</li>}
+                </ul>
+            </div>
+            }
+        </div>
+        <div>
+            @let phoneControl = RegisterForm.get('phone');
+            <div class="form-floating my-2">
+                <input [class]="{
+                    'is-valid' : !phoneControl?.errors && phoneControl?.dirty,
+                    'is-invalid' : phoneControl?.errors && phoneControl?.dirty,
+                }" formControlName="phone" type="tel" class="form-control rounded-4" id="floatingInput" placeholder="">
+                <label for="floatingInput">Phone:</label>
+            </div>
+            @if(phoneControl?.errors && phoneControl?.touched ){
+            <div class="alert alert-danger my-2" role="alert">
+                <ul class="list-unstyled m-0">
+                    @if(phoneControl?.getError('required')){<li class="font-monospace fw-bold">Phone is Required</li>}
+                    @if(phoneControl?.getError('pattern')){<li class="font-monospace fw-bold">Phone is Not Valid</li>}
+                </ul>
+            </div>
+            }
+        </div>
+
+
+
+        <button [disabled]="RegisterForm.invalid"
+            class="main-btn rounded-pill fw-bold text-white d-block w-100">Register
+            @if(loading){<span><i class="fa-solid fa-spinner fa-spin" style="color: #ffffff;"></i></span>}
+        </button>
+
+    </form>
+
+</section>

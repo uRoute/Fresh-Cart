@@ -1,0 +1,75 @@
+@if(_userCart){
+<section class="d-flex flex-column justify-content-center my-3">
+
+    <h1 class="fw-bold text-success fs-1"> Hello, {{_userInfo.name}} </h1>
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="fs-5 fs-md-3 fw-bold text-secondary-emphasis">
+            Total Cart Price is :
+            @if( _userCart && _userCart.data.totalCartPrice > 0){<span>{{_userCart.data.totalCartPrice
+                |currency:'GBP'}}</span>}
+            @else { <span> {{ 0 |currency : 'GBP'}} </span> }
+        </h2>
+        @if(_userCart.numOfCartItems > 0){
+        <div>
+            <button (click)="clearCart()" class="btn btn-outline-danger">Clear Cart</button>
+        </div>
+        }
+    </div>
+    <p class="fw-medium lead">Here is your cart</p>
+    @for( _userCartItem of _userCart.data.products ; track _userCartItem.product._id ){
+    <div
+        class="row mb-3 justify-content-lg-center column-gap-lg-2 align-items-center bg-light rounded-3 border-bottom border-3 border-success-subtle">
+        <div class="col-md-4 col-lg-2 p-md-2">
+            <div class="cart-item-img">
+                <img [src]="_userCartItem.product.imageCover" class="w-100 d-block" alt="">
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-9 p-md-2">
+            <div
+                class="row flex-md-column row-gap-md-2 row-gap-lg-0 flex-lg-row justify-content-lg-center column-gap-lg-2 align-items-center">
+                <div class="col-md-8 col-lg-9 p-md-2">
+                    <div class="product-cart-desc">
+                        <h1 class="fs-1 my-3 fw-bold text-success"> {{_userCartItem.product.title}} </h1>
+
+                        <div class="d-flex my-3 justify-content-between align-items-center">
+                            <h2 class="fs-3 my-3 fw-bold text-secondary-emphasis"> {{_userCartItem.price | currency :
+                                'GBP'}} </h2>
+                            <span class="fw-bold fs-3">
+                                <span class="text-secondary-emphasis">{{_userCartItem.product.ratingsAverage}}</span>
+                                <i class="text-warning fa-solid fa-star "></i>
+                            </span>
+                        </div>
+                        <h3 class="fs-3 my-3 fw-bold text-secondary-emphasis"> {{_userCartItem.product.category.name}}
+                        </h3>
+                        <button (click)="removeItem(_userCartItem.product._id)" class="btn btn-outline-danger">Remove
+                            From Cart</button>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2 p-md-2">
+                    <div
+                        class="count bg-dark-subtle rounded-3  p-3 d-flex justify-content-evenly justify-content-md-between align-items-center">
+                        <i (click)="updateQuant(_userCartItem.product._id , _userCartItem.count + 1)"
+                            class="fa-solid fa-circle-plus fa-lg text-success fw-bold"></i>
+                        <h2 class="fs-3 text-success fw-bold"> {{_userCartItem.count}} </h2>
+                        @if(_userCartItem.count>1){<i
+                            (click)="updateQuant(_userCartItem.product._id , _userCartItem.count + 1)"
+                            class="fa-solid fa-circle-minus fa-lg text-success fw-bold"></i>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }@empty {
+    <h1 class="text-center main-title d-flex align-items-center justify-content-center">No items to show, try to add
+        some products to cart
+        <span><i class="fa-solid fa-person-through-window fa-2xl mx-md-3" style="color: #4fb395;"></i></span>
+    </h1>
+    }
+    @if( _userCart.data.products.length > 0){<button [routerLink]="['/checkout' , _userCart.cartId]"
+        class="main-btn rounded-pill fw-bold text-white d-block w-100"> Check Out </button>}
+
+
+
+
+</section>
+}

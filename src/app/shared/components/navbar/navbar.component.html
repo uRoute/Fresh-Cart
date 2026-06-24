@@ -1,0 +1,100 @@
+<nav #nav class="navbar navbar-expand-lg p-3">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/login">
+            <img src="./images/freshcart-logo.svg" class="w-100 d-block" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse text-center navbar-collapse" id="navbarSupportedContent">
+            @if(check()){
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/home" routerLinkActive="fw-bold text-success">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/products" routerLinkActive="fw-bold text-success">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/brands" routerLinkActive="fw-bold text-success">Brands</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/categories" routerLinkActive="fw-bold text-success">Categories</a>
+                </li>
+
+            </ul>
+            }
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                @if(check()){
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/cart"
+                        routerLinkActive="fw-bold text-success">
+                        <div class="position-relative ">
+                            <span class="count text-center  fw-bold"> {{cartBadge()}} </span>
+                            <i class="fa-solid fa-cart-arrow-down fa-lg" style="color: #4fb395;"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/allorders"
+                        routerLinkActive="fw-bold text-success">
+                        <div class="position-relative ">
+                            <i class="fa-solid fa-truck-fast fa-lg" style="color: #f46709;"></i>
+                        </div>
+                    </a>
+                </li>
+                }
+
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </li>
+
+
+
+                @if(check() == false){
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" routerLinkActive="fw-bold text-success">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/register" routerLinkActive="fw-bold text-success">Register</a>
+                </li>
+                }
+
+                @if(check()){
+                <li (click)="logout()" class="nav-item">
+                    <a class="nav-link logout">Sign Out</a>
+                </li>
+                }
+
+            </ul>
+
+        </div>
+    </div>
+</nav>

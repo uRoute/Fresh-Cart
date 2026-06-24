@@ -1,0 +1,83 @@
+pagination-controls::ng-deep ul{
+    background-color: rgb(23, 22, 22) !important;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    font-size: 1.2rem !important;
+
+}
+/* pagination-controls::ng-deep ul > li:not(.active) > a {
+  background-color: red !important;
+  border-color: black !important;
+}    */
+
+/* pagination-controls::ng-deep ul > li.disabled > span {
+  background-color: brown !important;
+  border-color: black !important;
+} */
+
+pagination-controls::ng-deep ul > li:not(.current){
+    background-color: rgb(238, 244, 238) !important;
+    border-radius: 50% !important;
+    margin: 0 0.5rem;  
+    text-decoration: none !important;
+
+}
+pagination-controls::ng-deep ul > li.current{
+    background-color: rgb(64, 146, 64) !important;
+    border-radius: 50% !important;
+    margin: 0 0.5rem;  
+    text-decoration: none !important;
+
+}
+pagination-controls::ng-deep ul > li.pagination-previous{
+    color: white !important;
+    background-color: rgb(153, 153, 153) !important;
+    border-radius: 0.4rem !important;
+    margin: 0 0.5rem;  
+    text-decoration: none !important;
+
+}
+pagination-controls::ng-deep ul > li.pagination-next{
+    color: white !important;
+    background-color: rgb(153, 153, 153) !important;
+    border-radius: 0.4rem !important;
+    margin: 0 0.5rem;
+    text-decoration: none !important;
+
+}
+
+pagination-controls::ng-deep ul > li.disabled {
+    background-color: transparent !important;
+    margin: 0 0.5rem !important;  
+    box-shadow: none !important;
+    text-decoration: none !important;
+
+}
+pagination-controls::ng-deep ul > li:hover{
+    box-shadow: 0px 0px 10px lightgreen ;
+    text-decoration: none !important;
+
+}
+pagination-controls::ng-deep ul > li{
+    transition: all 0.2s;
+    text-decoration: none !important;
+
+}
+pagination-controls::ng-deep ul > li > a:hover{
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important ;
+    text-decoration: none !important;
+}
+
+.brand{
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.brand:hover{
+
+    box-shadow: 5px 5px 7px lightgray;
+
+}

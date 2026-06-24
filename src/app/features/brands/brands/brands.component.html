@@ -1,0 +1,31 @@
+<section class="my-3">
+    <div class="brands">
+        <div class="row">
+            @for(brand of brands | paginate: { itemsPerPage: 12 , currentPage: p } ; track brand._id){
+
+            <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
+                <div [routerLink]="['/products' , brand._id]"
+                    class="brand border border-3 border-primary-subtle rounded-3 p-3">
+                    <div>
+                        <img class="w-100 d-block" [src]="brand.image" [title]="brand.slug" [alt]="brand.name">
+                    </div>
+                    <h2 class="fs-5 text-center fw-bold text-secondary-emphasis"> {{brand.name}} </h2>
+                </div>
+            </div>
+
+
+
+
+            }@empty {
+            <h1 class="text-center main-title d-flex align-items-center justify-content-center">No items to show
+                <span><i class="fa-solid fa-person-through-window fa-2xl mx-md-3" style="color: #4fb395;"></i></span>
+            </h1>
+            }
+
+            @if (brands) {<pagination-controls class="d-flex justify-content-center align-items-center"
+                (pageChange)="p = $event"></pagination-controls>}
+
+
+        </div>
+    </div>
+</section>

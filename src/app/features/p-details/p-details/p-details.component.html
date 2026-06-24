@@ -1,0 +1,38 @@
+<section class="d-flex flex-column justify-content-center details">
+
+    <div class="row align-items-center">
+        <div class="col-md-6 col-lg-3 p-md-2">
+            <div class="product-images">
+                <owl-carousel-o [options]="customOptions">
+
+                    @for (p_image of productDetails.images; track $index) {
+                    <ng-template carouselSlide [id]="productDetails._id">
+                        <img [src]="p_image" class="w-100 category-img" [alt]="productDetails.title"
+                            [title]="productDetails.slug">
+                    </ng-template>
+                    }@empty {
+                    <h2 class="fw-bold text-center text-success-emphasis">Loadding ...</h2>
+                    }
+
+                </owl-carousel-o>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-9 p-md-2">
+            <div class="product-details">
+                <h2 class="fw-bold my-3 fs-3 text-dark-emphasis"> {{productDetails.title}} </h2>
+                <h1 class="my-3 fs-4 text-success"> {{productDetails.description}} </h1>
+                <h3 class="fw-bold my-3 fs-5 text-dark-emphasis"> {{productDetails.category.name}} </h3>
+                <div class="d-flex my-3 justify-content-between align-items-center">
+                    <h2 class="fw-bold fs-3 text-success"> {{productDetails.price | currency : 'GBP'}} </h2>
+                    <span>
+                        {{productDetails.ratingsAverage}}
+                        <i class="text-warning fa-solid fa-star "></i>
+                    </span>
+                </div>
+            </div>
+            <button (click)="AddToCart(productDetails._id)" class="main-btn rounded-pill fw-bold text-white d-block w-100">+Add to Cart <span><i class="fa-solid fa-cart-arrow-down fa-lg"></i></span></button>
+        </div>
+    </div>
+
+</section>

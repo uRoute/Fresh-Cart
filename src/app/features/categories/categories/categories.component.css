@@ -1,0 +1,7 @@
+.cate-img{
+    height: 150px;
+}
+.cate-img img{
+    object-fit: contain;
+}
+
