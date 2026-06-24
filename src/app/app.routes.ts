@@ -7,9 +7,9 @@ import { WildComponent } from './shared/components/wild/wild.component';
 import { authGuard } from './core/guard/auth-guard';
 
 export const routes: Routes = [
-    {path:'' , redirectTo:  'login' , pathMatch:'full' },
     
     {path:'' , component:AutLayoutComponent  , children:[
+        {path:'' , redirectTo:  'login' , pathMatch:'full' },
         {path:'login' , component:LoginComponent , title:'Fresh-Cart'},
         {path:'register' , component:RegisterComponent , title:'Fresh-Cart'}
     ] },
