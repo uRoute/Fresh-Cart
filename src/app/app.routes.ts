@@ -4,8 +4,6 @@ import { LoginComponent } from './core/components/login/login.component';
 import { RegisterComponent } from './core/components/register/register.component';
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
 import { WildComponent } from './shared/components/wild/wild.component';
-import { inject } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { authGuard } from './core/guard/auth-guard';
 
 export const routes: Routes = [
