@@ -9,10 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { authGuard } from './core/guard/auth-guard';
 
 export const routes: Routes = [
-    {path:'' , redirectTo: ()=>{ 
-        let _CookieService = inject(CookieService)
-        return _CookieService.check('token') ? 'home' : 'login'
-    }, pathMatch:'full' },
+    {path:'' , redirectTo:  'login' , pathMatch:'full' },
     
     {path:'' , component:AutLayoutComponent  , children:[
         {path:'login' , component:LoginComponent , title:'Fresh-Cart'},
