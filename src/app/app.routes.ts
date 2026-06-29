@@ -9,7 +9,7 @@ import { authGuard } from './core/guard/auth-guard';
 export const routes: Routes = [
     
     {path:'' , component:AutLayoutComponent  , children:[
-        {path:'' , redirectTo:  'login' , pathMatch:'full' },
+        {path:'' , redirectTo:'login' , pathMatch:'full' },
         {path:'login' , component:LoginComponent , title:'Fresh-Cart'},
         {path:'register' , component:RegisterComponent , title:'Fresh-Cart'}
     ] },
