@@ -2,10 +2,10 @@ import { Component, inject, OnDestroy } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { AuthenticationService } from '../../../shared/services/authentication/authentication.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -14,7 +14,6 @@ export class RegisterComponent implements OnDestroy {
   private readonly _Router = inject(Router)
   private readonly _ToastrService = inject(ToastrService)
   loading:boolean = false
-
   timeoutId:any
   RegisterForm:FormGroup = new FormGroup({
     name:new FormControl(null , [Validators.required , Validators.pattern(/^[A-Z][a-z]{2,}(?:\s[A-Z][a-z]{2,}){0,3}$/)]),

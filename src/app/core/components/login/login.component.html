@@ -43,10 +43,13 @@
       
 
 
-        <button [disabled]="LoginForm.invalid"
+        <div>
+            <button [disabled]="LoginForm.invalid"
             class="main-btn rounded-pill fw-bold text-white d-block w-100">Login
             @if(loading){<span><i class="fa-solid fa-spinner fa-spin" style="color: #ffffff;"></i></span>}
         </button>
+            <p class="text-muted fs-6 text-center my-3">Doesn't have an account? <span class="navigate main-title" routerLink="/register">Register <i class="fa-regular fa-hand-spock"></i></span></p>
+        </div>
 
     </form>
 
