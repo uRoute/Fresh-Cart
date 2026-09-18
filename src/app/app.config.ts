@@ -5,7 +5,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { headerInterceptor } from './core/interceptors/header/header-interceptor';
@@ -19,7 +18,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch() , withInterceptors([headerInterceptor,loadingInterceptor,errorInterceptor])),
     importProvidersFrom(CookieService , NgxPaginationModule , NgxSpinnerModule),
     provideAnimations(),
-    provideToastr(),
-    provideClientHydration(withEventReplay())
+    provideToastr()
   ]
 };

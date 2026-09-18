@@ -28,6 +28,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/Fresh-Cart",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -52,11 +53,7 @@
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "index": "src/index.html"
           },
           "configurations": {
             "production": {
