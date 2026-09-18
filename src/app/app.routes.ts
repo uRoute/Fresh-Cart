@@ -14,7 +14,7 @@ export const routes: Routes = [
         {path:'register' , component:RegisterComponent , title:'Fresh-Cart'}
     ] },
     {path:'' , component:MainLayoutComponent , canActivate:[authGuard] , children:[
-        {path:'home' , loadComponent : ()=> import('./features/home/home/home.component').then( (c)=> c.HomeComponent ) , title:'Fresh-Cart'},
+        {path:'home' , loadComponent : ()=> import('./features/home/home/home.component').then( (c)=> c.HomeComponent ) , title:'Fresh-Cart | Home page'},
         {path:'products' , loadComponent : ()=> import('./features/products/products/products.component').then( (c)=> c.ProductsComponent ) , title:'Fresh-Cart'},
         {path:'products/:b_id' , loadComponent : ()=> import('./features/products/products/products.component').then( (c)=> c.ProductsComponent ) , title:'Fresh-Cart'},
         {path:'products/:c_id' , loadComponent : ()=> import('./features/products/products/products.component').then( (c)=> c.ProductsComponent ) , title:'Fresh-Cart'},
